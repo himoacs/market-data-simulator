@@ -1,0 +1,12 @@
+AAPL:
+  lastTradePrice: 250.0f
+  lastBidPrice: 249.0f
+  lastAskPrice: 251.0f
+  exchange: NASDAQ
+  assetClass: EQ
+IBM:
+  lastTradePrice: 100.0f
+  lastBidPrice: 99.0f
+  lastAskPrice: 101.0f
+  exchange: NYSE
+  assetClass: EQ
