@@ -72,6 +72,7 @@ public class Stock extends Security {
         messageJSON.put("bidPrice", bidPrice);
         messageJSON.put("bidSize", bidSize);
         messageJSON.put("exchange", this.getExchange().getName());
+        messageJSON.put("currency", this.getCurrency());
 
         return messageJSON;
     }

@@ -4,9 +4,11 @@ AAPL:
   lastAskPrice: 251.0f
   exchange: NASDAQ
   assetClass: EQ
+  currency: USD
 IBM:
   lastTradePrice: 100.0f
   lastBidPrice: 99.0f
   lastAskPrice: 101.0f
   exchange: NYSE
   assetClass: EQ
+  currency: USD

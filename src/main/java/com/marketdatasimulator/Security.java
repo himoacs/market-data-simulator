@@ -14,7 +14,23 @@ public class Security {
     private float lastPrice;
     private float lastAskPrice;
     private float lastBidPrice;
+    private String currency;
 
+    public float getLastPrice() {
+        return lastPrice;
+    }
+
+    public void setLastPrice(float lastPrice) {
+        this.lastPrice = lastPrice;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
     public Security() {
     }

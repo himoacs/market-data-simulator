@@ -11,8 +11,8 @@ package com.marketdatasimulator;
  * Market data is published to a specific topic per security using Solace's rich topical hierarchy. They topic structure
  * is <assetClass>/<country>/<exchange>/<name>. For example, AAPL's market data will be published to: EQ/US/NASDAQ/AAPL
  * The payload is in JSON and contains both trade and quote data. Here is what a sample payload looks like:
- * {"symbol":"AAPL","askPrice":249.99023,"bidSize":290,"tradeSize":480,"exchange":"NASDAQ","tradePrice":248.4375,
- * "askSize":210,"bidPrice":246.88477,"timestamp":2020-03-20T13:26:30.733592-04:00}
+ * {"symbol":"AAPL","askPrice":249.99023,"bidSize":290,"tradeSize":480,"exchange":"NASDAQ","currency":"USD",
+ * "tradePrice":248.4375,"askSize":210,"bidPrice":246.88477,"timestamp":2020-03-20T13:26:30.733592-04:00}
  *
  */
 
@@ -65,6 +65,7 @@ public class Main {
             stocks[i].setLastTradePrice(Float.parseFloat((String) stockInfo.get("lastTradePrice")));
             stocks[i].setLastAskPrice(Float.parseFloat((String) stockInfo.get("lastAskPrice")));
             stocks[i].setLastBidPrice(Float.parseFloat((String) stockInfo.get("lastBidPrice")));
+            stocks[i].setCurrency((String) stockInfo.get("currency"));
 
             // Dynamically instantiate specific exchange classes based on config
             String className = "com.marketdatasimulator."+stockInfo.get("exchange");
@@ -104,11 +105,17 @@ public class Main {
                     MessageProducer messageProducer = session.createProducer(topic);
                     messageProducer.send(topic, message, DeliveryMode.NON_PERSISTENT,
                             message.DEFAULT_PRIORITY, message.DEFAULT_TIME_TO_LIVE);
-                    Thread.sleep((1000));
 
+
+                }
+                else {
+                    System.out.println(stocks[i].getExchange().getName() + " is closed at this time!");
                 }
 
             }
+
+            Thread.sleep((1000));
+
 
         }
 
