@@ -3,19 +3,34 @@
 `market-data-simulator` is a lightweight application designed to connect to an event broker via JMS ([Solace PubSub+](https://solace.com/products/event-broker/software/), free) and publish sample market (pricing) data (L1 quotes and trades) for securities. It can be extremely difficult to get market data for free, especially real-time market data. And when you do get it, it is usually throttled for the free tier. `market-data-simulator` is meant to be used as a building block for interesting financial applications such as P&L calculator, TCA application, Portfolio analysis amongst others. 
 
 ## So, what does it do?
-`market-data-simulator` publishes market data for securities in JSON format. Here is an example for `AAPL`:
+`market-data-simulator` publishes market data for securities in JSON format. Here are two published messages for `AAPL` and `IBM`:
 
     {
     "symbol":"AAPL",
-    "askPrice":249.99023,
-    "bidSize":290,
-    "tradeSize":480,
+    "askPrice":250.3121,
+    "bidSize":630,
+    "tradeSize":180,
     "exchange":"NASDAQ",
-    "tradePrice":248.4375,
-    "askSize":210,
-    "bidPrice":246.88477,
-    "timestamp":2020-03-20T13:26:30.733592-04:00
+    "currency":"USD",
+    "tradePrice":249.9996,
+    "askSize":140,
+    "bidPrice":249.6871,
+    "timestamp":2020-03-23T09:32:10.610764-04:00
     }
+    
+    {
+    "symbol":"IBM",
+    "askPrice":101.0025,
+    "bidSize":720,
+    "tradeSize":490,
+    "exchange":"NYSE",
+    "currency":"USD",
+    "tradePrice":100.5,
+    "askSize":340,
+    "bidPrice":99.9975,
+    "timestamp":2020-03-23T09:32:09.609035-04:00
+    }
+
 
 The data is published to a topic of this structure:
 
@@ -59,3 +74,5 @@ So how do you get started with this code? Follow these simple steps:
  3. Update `broker.yaml` with your connection settings
  4. [Optional] Update `securities.yaml` with the securities you want to publish sample data for and their corresponding last (trade/ask/bid) prices.
  5. Run `Main.java` and watch data flow. Note that data will only be published during market hours. 
+
+
