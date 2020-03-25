@@ -44,8 +44,8 @@ This specific topic hierarchy is used to take full advantages of Solace PubSub+'
 ## Configurations
 There are two main configurations file:
 
- - broker.yaml
- - securities.yaml
+ - src/main/resources/broker.yaml
+ - src/main/resources/securities.yaml
 
 `broker.yaml` contains connection properties for your event broker. You need to populate the necessary fields with your specific broker properties. Those fields are: `host`, `vpn`, `user`, and `password`. 
 
