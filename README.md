@@ -40,7 +40,7 @@ In the example above, data would be published to:
 
     EQ/US/NASDAQ/AAPL
 
-This specific topic hierarchy is used to take full advantages of Solace PubSub+'s rich hierarchial topics which provide strong wildcard support and advance filtering logic. You can read more about that [here](https://docs.solace.com/Best-Practices/Topic-Architecture-Best-Practices.htm#mc-main-content). 
+This specific topic hierarchy is used to take full advantage of Solace PubSub+'s rich hierarchical topics which provide strong wildcard support and advance filtering logic. You can read more about that [here](https://docs.solace.com/Best-Practices/Topic-Architecture-Best-Practices.htm#mc-main-content). 
 
 ## Configurations
 There are two main configurations file:
@@ -57,11 +57,11 @@ In my case, I am using free service on Solace Cloud which lets me quickly sping 
     user: <username> 
     pass: <password>
 
-`securities.yaml` file contains useful information about securities for which you would like to generate sample market data. Usually, in companies, you would have a separate time which stores and maintains all this data for all the securities that your company is interested in. However, in our case, we need to provide this ourselves. For now, you need to provide: `exchange`, `assetClass`, `currency`, `lastTradePrice`, `lastAskPrice`, and `lastBidPrice`. 
+`securities.yaml` file contains useful information about securities for which you would like to generate sample market data. Usually, in companies, you would have a separate time which stores and maintains all this data for all the securities that your company is interested in. However, in our case, we need to provide this ourselves. For now, you need to provide: `name`, `exchange`, `assetClass`, `currency`, `lastTradePrice`, `lastAskPrice`, and `lastBidPrice`. 
 
 `exchange`, `assetClass` and `currency` data is used to provide some context about the security. Which exchange does this security primarily trade on? Which asset class (EQ, FX etc) does it belong to? Which currency are the prices quoted in? Exchange information is used to link securities to exchanges and their corresponding market hours so that we only publish data when the markets are open. For example, US equities data will only be published from 09:30am to 04:00pm. In future, I would like to add support for other asset classes as well, which is why I added the `assetClass` property.
 
-If you would like to add support for a new Exchange besides the two that are currently there by default (NYSE and NASDAQ), you would need to create a new class for each exchange (i.e. SGX.java) and invoke super `Exchange.java` class with the necessary information such as `name`, `country`, `timezone`, `openTime` and `closeTime`.  
+If you would like to add support for a new Exchange besides the ones that are currently there by default (NYSE, NASDAQ, LSE, and SGX), you would need to create a new class for each exchange (i.e. TSX.java) and invoke super `Exchange.java` class with the necessary information such as `name`, `country`, `timezone`, `openTime` and `closeTime`.  
 
 `lastTradePrice`, `lastAskPrice`, and `lastBidPrice` are all used to provide baseline for random prices which will be generated. You can enter whatever values you like here but to be a bit realistic, it is recommended that you use last values for this fields. The code will generate random `askPrice` and `bidPrice` and a `tradePrice` that falls between those two values (no crossed markets here ). 
 
