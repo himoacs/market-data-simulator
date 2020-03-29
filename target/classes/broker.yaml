@@ -1,4 +1,4 @@
-host: 
-vpn: 
-user: 
-pass: 
+host: mr2mbqbl71aln1.messaging.solace.cloud:55555
+vpn: himanshu-demo-dev
+user: solace-cloud-client
+pass: 6vvh40rvsadbm960uhn5scrb2g

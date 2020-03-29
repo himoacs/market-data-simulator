@@ -1,5 +1,6 @@
 package com.marketdatasimulator;
 
+import com.marketdatasimulator.exchanges.Exchange;
 import java.util.List;
 
 public class Security {
@@ -8,6 +9,7 @@ public class Security {
      * The Security class is meant to define generic securities and is extended by Stock class.
      */
 
+    private String symbol;
     private String name;
     private Exchange exchange;
     private AssetClass assetClass;
@@ -16,8 +18,20 @@ public class Security {
     private float lastBidPrice;
     private String currency;
 
+
+    public Security() {
+    }
+
     public float getLastPrice() {
         return lastPrice;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public void setLastPrice(float lastPrice) {
@@ -30,9 +44,6 @@ public class Security {
 
     public void setCurrency(String currency) {
         this.currency = currency;
-    }
-
-    public Security() {
     }
 
     public String getName() {

@@ -1,4 +1,5 @@
 AAPL:
+  name: Apple
   lastTradePrice: 250.0f
   lastBidPrice: 249.0f
   lastAskPrice: 251.0f
@@ -6,9 +7,26 @@ AAPL:
   assetClass: EQ
   currency: USD
 IBM:
+  name: International Business Machines
   lastTradePrice: 100.0f
   lastBidPrice: 99.0f
   lastAskPrice: 101.0f
   exchange: NYSE
   assetClass: EQ
   currency: USD
+VOD:
+  name: Vodafone
+  lastTradePrice: 100.0f
+  lastBidPrice: 99.0f
+  lastAskPrice: 101.0f
+  exchange: LSE
+  assetClass: EQ
+  currency: GBP
+DBS:
+  name: Development Bank of Singapore
+  lastTradePrice: 19.42f
+  lastBidPrice: 20.0f
+  lastAskPrice: 19.0f
+  exchange: SGX
+  assetClass: EQ
+  currency: SGD

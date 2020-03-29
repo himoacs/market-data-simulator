@@ -16,6 +16,7 @@ package com.marketdatasimulator;
  *
  */
 
+import com.marketdatasimulator.exchanges.Exchange;
 import com.solacesystems.jms.SolConnectionFactory;
 import com.solacesystems.jms.SolJmsUtility;
 import org.yaml.snakeyaml.Yaml;
@@ -61,14 +62,15 @@ public class Main {
             Map<String, Object> stockInfo = (Map<String, Object>) securitiesConfig.get(securities.get(i));
 
             stocks[i] = new Stock();
-            stocks[i].setName(securities.get(i));
+            stocks[i].setSymbol(securities.get(i));
+            stocks[i].setName((String) stockInfo.get("name"));
             stocks[i].setLastTradePrice(Float.parseFloat((String) stockInfo.get("lastTradePrice")));
             stocks[i].setLastAskPrice(Float.parseFloat((String) stockInfo.get("lastAskPrice")));
             stocks[i].setLastBidPrice(Float.parseFloat((String) stockInfo.get("lastBidPrice")));
             stocks[i].setCurrency((String) stockInfo.get("currency"));
 
             // Dynamically instantiate specific exchange classes based on config
-            String className = "com.marketdatasimulator."+stockInfo.get("exchange");
+            String className = "com.marketdatasimulator.exchanges."+stockInfo.get("exchange");
 
             stocks[i].setExchange((Exchange) Class.forName(className).getConstructor().newInstance());
             stocks[i].setAssetClass(new AssetClass((String) stockInfo.get("assetClass")));

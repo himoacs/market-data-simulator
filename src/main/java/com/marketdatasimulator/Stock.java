@@ -64,7 +64,7 @@ public class Stock extends Security {
 
         JSONObject messageJSON = new JSONObject();
         messageJSON.put("timestamp", currentDateTime);
-        messageJSON.put("symbol", this.getName());
+        messageJSON.put("symbol", this.getSymbol());
         messageJSON.put("tradePrice", tradePrice);
         messageJSON.put("tradeSize", tradeSize);
         messageJSON.put("askPrice", askPrice);
