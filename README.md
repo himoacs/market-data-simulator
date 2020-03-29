@@ -69,7 +69,7 @@ In my case, I am using free service on Solace Cloud which lets me quickly sping 
     user: <username> 
     pass: <password>
 
-`securities.yaml` file contains useful information about securities for which you would like to generate sample market data. Usually, in companies, you would have a separate time which stores and maintains all this data for all the securities that your company is interested in. However, in our case, we need to provide this ourselves. For now, you need to provide: `name`, `exchange`, `assetClass`, `currency`, `lastTradePrice`, `lastAskPrice`, and `lastBidPrice`. 
+`securities.yaml` file contains useful information about securities for which you would like to generate sample market data. Usually, in companies, you would have a separate team which stores and maintains all this data for all the securities that your company is interested in. However, in our case, we need to provide this ourselves. For now, you need to provide: `name`, `exchange`, `assetClass`, `currency`, `lastTradePrice`, `lastAskPrice`, and `lastBidPrice`. 
 
 `exchange`, `assetClass` and `currency` data is used to provide some context about the security. Which exchange does this security primarily trade on? Which asset class (EQ, FX etc) does it belong to? Which currency are the prices quoted in? Exchange information is used to link securities to exchanges and their corresponding market hours so that we only publish data when the markets are open. For example, US equities data will only be published from 09:30am to 04:00pm. In future, I would like to add support for other asset classes as well, which is why I added the `assetClass` property.
 
