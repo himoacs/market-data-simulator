@@ -1,3 +1,4 @@
+
 # market-data-simulator
 
 `market-data-simulator` is a lightweight application designed to connect to an event broker via JMS ([Solace PubSub+](https://solace.com/products/event-broker/software/), free) and publish sample market (pricing) data (L1 quotes and trades) for securities. It can be extremely difficult to get market data for free, especially real-time market data. And when you do get it, it is usually throttled for the free tier. `market-data-simulator` is meant to be used as a building block for interesting financial applications such as P&L calculator, TCA application, Portfolio analysis amongst others. 
@@ -64,6 +65,20 @@ If you would like to add support for a new Exchange besides the two that are cur
 
 `lastTradePrice`, `lastAskPrice`, and `lastBidPrice` are all used to provide baseline for random prices which will be generated. You can enter whatever values you like here but to be a bit realistic, it is recommended that you use last values for this fields. The code will generate random `askPrice` and `bidPrice` and a `tradePrice` that falls between those two values (no crossed markets here ). 
 
+## Receiving data
+Purpose of `market-data-simulator` is to only publish market data. However, for testing purposes, I have included code for a simple subscriber in `SampleConsumer.java` which will subscribe to a given topic and print out any messages being published to that topic. 
+
+To set the topic, modify this line:
+`final String TOPIC_NAME = "*/US/>";`
+
+Note: You can use Solace's powerful wildcards when specifying the topic which allows you to abstract away multiple levels and apply filtering. Here are some examples:
+
+ - `EQ/>` - to subscribe to all equities
+ - `*/*/NYSE/>` -  to subscribe to all NYSE securities
+ - `EQ/US/>` - to subscribe to all US equities
+
+You can learn more about Solace's wildcards [here](https://docs.solace.com/PubSub-Basics/Wildcard-Charaters-Topic-Subs.htm).
+
 ## Getting Started
 So how do you get started with this code? Follow these simple steps:
 
@@ -74,5 +89,3 @@ So how do you get started with this code? Follow these simple steps:
  3. Update `broker.yaml` with your connection settings
  4. [Optional] Update `securities.yaml` with the securities you want to publish sample data for and their corresponding last (trade/ask/bid) prices.
  5. Run `Main.java` and watch data flow. Note that data will only be published during market hours. 
-
-
