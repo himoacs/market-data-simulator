@@ -6,6 +6,22 @@ AAPL:
   exchange: NASDAQ
   assetClass: EQ
   currency: USD
+FB:
+  name: Facebook
+  lastTradePrice: 170.0f
+  lastBidPrice: 168.0f
+  lastAskPrice: 172.0f
+  exchange: NASDAQ
+  assetClass: EQ
+  currency: USD
+INTC:
+  name: Intel
+  lastTradePrice: 60.0f
+  lastBidPrice: 59.0f
+  lastAskPrice: 61.0f
+  exchange: NASDAQ
+  assetClass: EQ
+  currency: USD
 IBM:
   name: International Business Machines
   lastTradePrice: 100.0f
@@ -14,12 +30,20 @@ IBM:
   exchange: NYSE
   assetClass: EQ
   currency: USD
-FB:
-  name: Facebook
-  lastTradePrice: 170.0f
-  lastBidPrice: 168.0f
-  lastAskPrice: 172.0f
-  exchange: NASDAQ
+BAC:
+  name: Bank of America
+  lastTradePrice: 22.0f
+  lastBidPrice: 21.0f
+  lastAskPrice: 23.0f
+  exchange: NYSE
+  assetClass: EQ
+  currency: USD
+XOM:
+  name: ExxonMobil
+  lastTradePrice: 42.0f
+  lastBidPrice: 41.0f
+  lastAskPrice: 43.0f
+  exchange: NYSE
   assetClass: EQ
   currency: USD
 VOD:
