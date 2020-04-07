@@ -35,10 +35,10 @@
 
 The data is published to a topic of this structure:
 
-    <assetClass>/<country>/<exchange>/<name>
+    <assetClass>/marketData/v1/<country>/<exchange>/<name>
 In the example above, data would be published to:
 
-    EQ/US/NASDAQ/AAPL
+    EQ/marketData/v1/US/NASDAQ/AAPL
 
 This specific topic hierarchy is used to take full advantage of Solace PubSub+'s rich hierarchical topics which provide strong wildcard support and advance filtering logic. You can read more about that [here](https://docs.solace.com/Best-Practices/Topic-Architecture-Best-Practices.htm#mc-main-content). 
 
@@ -86,8 +86,8 @@ To set the topic, modify this line:
 Note: You can use Solace's powerful wildcards when specifying the topic which allows you to abstract away multiple levels and apply filtering. Here are some examples:
 
  - `EQ/>` - to subscribe to all equities
- - `*/*/NYSE/>` -  to subscribe to all NYSE securities
- - `EQ/US/>` - to subscribe to all US equities
+ - `*/*/*/*/NYSE/>` -  to subscribe to all NYSE securities
+ - `EQ/marketData/v1/US/>` - to subscribe to all US equities
 
 You can learn more about Solace's wildcards [here](https://docs.solace.com/PubSub-Basics/Wildcard-Charaters-Topic-Subs.htm).
 
