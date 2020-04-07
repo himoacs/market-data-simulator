@@ -101,6 +101,7 @@ public class Main {
 
                     // Generate topic for this security
                     String TOPIC_NAME = stocks[i].generateTopic();
+                    System.out.println("Publishing to topic: " + TOPIC_NAME);
                     Topic topic = session.createTopic(TOPIC_NAME);
 
                     // Publish message to the topic

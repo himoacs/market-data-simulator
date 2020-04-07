@@ -2,6 +2,10 @@ package com.marketdatasimulator;
 
 public class Country {
 
+    /**
+     * Class for defining the Country that an exchange belongs to.
+     */
+
     private String name;
 
     public Country(String name) {

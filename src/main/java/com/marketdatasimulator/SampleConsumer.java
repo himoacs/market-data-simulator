@@ -1,8 +1,10 @@
 package com.marketdatasimulator;
 
+import com.solacesystems.jcsmp.BytesXMLMessage;
 import com.solacesystems.jms.SolConnectionFactory;
 import com.solacesystems.jms.SolJmsUtility;
 import com.solacesystems.jms.SupportedProperty;
+import com.solacesystems.jms.message.SolMapMessage;
 import org.yaml.snakeyaml.Yaml;
 import javax.jms.*;
 import java.io.InputStream;
@@ -36,7 +38,7 @@ public class SampleConsumer {
         Session session = connection.createSession(false, SupportedProperty.SOL_CLIENT_ACKNOWLEDGE);
 
         // Set the topic you would like to subscribe to. You can use Solace's wildcards (* and >) here.
-        final String TOPIC_NAME = "*/US/>";
+        final String TOPIC_NAME = "EQ/>";
 
         Topic topic = session.createTopic(TOPIC_NAME);
 

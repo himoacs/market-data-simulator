@@ -19,8 +19,14 @@ public class Stock extends Security {
     @Override
     public List<Object> generatePriceAndSize() {
 
-        System.out.println("generating prices");
+        /**
+         * Method for generating random prices and sizes for trades and quotes
+         * Once the different prices are generated, they are cached to be used
+         * when we generate prices next time. This is to ensure we don't see spikes in prices.
+         */
 
+        // Generate a random number and use it as a threshold
+        // The threshold can be positive or negative
         Random rand = new Random();
         float threshold = (float) (rand.nextInt(21) - 10)/800;
 
@@ -42,15 +48,27 @@ public class Stock extends Security {
     }
 
     public String generateTopic() {
+
+        /**
+         * Method for generating topic  to which the message will be published.
+         * The TOPIC structure we are using is:
+         * <assetClass>/marketData/v1/<country>/<exchange>/<symbol>
+         */
+
         String assetClass = this.getAssetClass().getName();
-        String name = this.getName();
+        String symbol = this.getSymbol();
         String exchange = this.getExchange().getName();
         String country = this.getExchange().getCountry().getName();
 
-        return assetClass+"/"+country+"/"+exchange+"/"+name;
+        return assetClass+"/marketData/v1/"+country+"/"+exchange+"/"+symbol;
     }
 
     public JSONObject generateMessage() {
+
+        /**
+         * This method is for generating the JSON payload which will be published
+         * with all the prices and sizes.
+         */
 
         List<Object> priceAndSize = this.generatePriceAndSize();
 
