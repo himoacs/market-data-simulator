@@ -6,11 +6,43 @@ AAPL:
   exchange: NASDAQ
   assetClass: EQ
   currency: USD
+FB:
+  name: Facebook
+  lastTradePrice: 170.0f
+  lastBidPrice: 168.0f
+  lastAskPrice: 172.0f
+  exchange: NASDAQ
+  assetClass: EQ
+  currency: USD
+INTC:
+  name: Intel
+  lastTradePrice: 60.0f
+  lastBidPrice: 59.0f
+  lastAskPrice: 61.0f
+  exchange: NASDAQ
+  assetClass: EQ
+  currency: USD
 IBM:
   name: International Business Machines
   lastTradePrice: 100.0f
   lastBidPrice: 99.0f
   lastAskPrice: 101.0f
+  exchange: NYSE
+  assetClass: EQ
+  currency: USD
+BAC:
+  name: Bank of America
+  lastTradePrice: 22.0f
+  lastBidPrice: 21.0f
+  lastAskPrice: 23.0f
+  exchange: NYSE
+  assetClass: EQ
+  currency: USD
+XOM:
+  name: ExxonMobil
+  lastTradePrice: 42.0f
+  lastBidPrice: 41.0f
+  lastAskPrice: 43.0f
   exchange: NYSE
   assetClass: EQ
   currency: USD
@@ -22,11 +54,43 @@ VOD:
   exchange: LSE
   assetClass: EQ
   currency: GBP
+BARC:
+  name: Barclays
+  lastTradePrice: 94.79f
+  lastBidPrice: 93.0f
+  lastAskPrice: 96.0f
+  exchange: LSE
+  assetClass: EQ
+  currency: GBP
+TED:
+  name: Ted Baker
+  lastTradePrice: 133.0f
+  lastBidPrice: 130.0f
+  lastAskPrice: 136.0f
+  exchange: LSE
+  assetClass: EQ
+  currency: GBP
 DBS:
   name: Development Bank of Singapore
   lastTradePrice: 19.42f
   lastBidPrice: 20.0f
   lastAskPrice: 19.0f
+  exchange: SGX
+  assetClass: EQ
+  currency: SGD
+UOB:
+  name: United Overseas Bank
+  lastTradePrice: 28.45f
+  lastBidPrice: 27.0f
+  lastAskPrice: 29.0f
+  exchange: SGX
+  assetClass: EQ
+  currency: SGD
+VENM:
+  name: Venture Manufacturing
+  lastTradePrice: 15.12f
+  lastBidPrice: 14.0f
+  lastAskPrice: 16.0f
   exchange: SGX
   assetClass: EQ
   currency: SGD

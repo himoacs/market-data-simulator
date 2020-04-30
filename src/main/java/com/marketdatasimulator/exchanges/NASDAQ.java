@@ -1,7 +1,6 @@
 package com.marketdatasimulator.exchanges;
 
 import com.marketdatasimulator.Country;
-
 import java.time.OffsetTime;
 import java.time.ZoneOffset;
 

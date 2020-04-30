@@ -1,10 +1,8 @@
 package com.marketdatasimulator;
 
-import com.solacesystems.jcsmp.BytesXMLMessage;
 import com.solacesystems.jms.SolConnectionFactory;
 import com.solacesystems.jms.SolJmsUtility;
 import com.solacesystems.jms.SupportedProperty;
-import com.solacesystems.jms.message.SolMapMessage;
 import org.yaml.snakeyaml.Yaml;
 import javax.jms.*;
 import java.io.InputStream;

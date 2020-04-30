@@ -8,7 +8,7 @@ import java.time.ZoneOffset;
 public class NYSE extends Exchange {
 
     /**
-     * CLass for NYSE exchange.
+     * Class for NYSE exchange.
      */
 
     public NYSE() {

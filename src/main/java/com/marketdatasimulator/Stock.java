@@ -1,8 +1,16 @@
 package com.marketdatasimulator;
 
 import org.json.simple.JSONObject;
+
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -81,7 +89,8 @@ public class Stock extends Security {
         OffsetDateTime currentDateTime = OffsetDateTime.now();
 
         JSONObject messageJSON = new JSONObject();
-        messageJSON.put("timestamp", currentDateTime);
+        messageJSON.put("date", currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        messageJSON.put("time", currentDateTime.format(DateTimeFormatter.ISO_OFFSET_TIME));
         messageJSON.put("symbol", this.getSymbol());
         messageJSON.put("tradePrice", tradePrice);
         messageJSON.put("tradeSize", tradeSize);

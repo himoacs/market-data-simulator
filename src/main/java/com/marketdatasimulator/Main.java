@@ -9,7 +9,8 @@ package com.marketdatasimulator;
  * securities when there exchanges are open. For example, you will not receive market data for a US security after 4pm.
  *
  * Market data is published to a specific topic per security using Solace's rich topical hierarchy. They topic structure
- * is <assetClass>/<country>/<exchange>/<name>. For example, AAPL's market data will be published to: EQ/US/NASDAQ/AAPL
+ * is <assetClass>/marketData/v1/<country>/<exchange>/<symbol>. For example, AAPL's market data will be
+ * published to: EQ/marketData/v1/US/NASDAQ/AAPL
  * The payload is in JSON and contains both trade and quote data. Here is what a sample payload looks like:
  * {"symbol":"AAPL","askPrice":249.99023,"bidSize":290,"tradeSize":480,"exchange":"NASDAQ","currency":"USD",
  * "tradePrice":248.4375,"askSize":210,"bidPrice":246.88477,"timestamp":2020-03-20T13:26:30.733592-04:00}
@@ -22,6 +23,7 @@ import com.solacesystems.jms.SolJmsUtility;
 import org.yaml.snakeyaml.Yaml;
 import javax.jms.*;
 import java.io.InputStream;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Main {
@@ -94,22 +96,25 @@ public class Main {
                 // Check if exchange is open
                 if (stocks[i].getExchange().isExchangeOpen()) {
 
-                    // Get market data for this stock and convert it to JSON string
-                    String textMessage = stocks[i].generateMessage().toJSONString();
-                    TextMessage message = session.createTextMessage(textMessage);
-                    System.out.println(textMessage);
-
                     // Generate topic for this security
                     String TOPIC_NAME = stocks[i].generateTopic();
-                    System.out.println("Publishing to topic: " + TOPIC_NAME);
                     Topic topic = session.createTopic(TOPIC_NAME);
+                    // System.out.println("Publishing to topic: " + topic);
+
+                    // Get market data for this stock and convert it to JSON string
+                    String textMessage = stocks[i].generateMessage().toJSONString();
+                    // System.out.println(textMessage);
+
+                    // Create a ByteMessage
+                    BytesMessage message = session.createBytesMessage();
+                    message.writeBytes(textMessage.getBytes());
 
                     // Publish message to the topic
                     MessageProducer messageProducer = session.createProducer(topic);
                     messageProducer.send(topic, message, DeliveryMode.NON_PERSISTENT,
                             message.DEFAULT_PRIORITY, message.DEFAULT_TIME_TO_LIVE);
 
-
+                    messageProducer.send(topic, message);
                 }
                 else {
                     System.out.println(stocks[i].getExchange().getName() + " is closed at this time!");
@@ -117,11 +122,10 @@ public class Main {
 
             }
 
+            // Use this to control frequency of messages
             Thread.sleep((1000));
 
-
         }
-
 
     }
 }
