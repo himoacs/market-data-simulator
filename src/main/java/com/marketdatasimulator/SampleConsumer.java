@@ -1,5 +1,6 @@
 package com.marketdatasimulator;
 
+import com.solacesystems.jcsmp.BytesXMLMessage;
 import com.solacesystems.jms.SolConnectionFactory;
 import com.solacesystems.jms.SolJmsUtility;
 import com.solacesystems.jms.SupportedProperty;
@@ -50,10 +51,13 @@ public class SampleConsumer {
             @Override
             public void onMessage(Message message) {
                 try {
-                    if (message instanceof TextMessage) {
-                        System.out.printf("'%s'%n", ((TextMessage) message).getText());
+                    if (message instanceof BytesMessage) {
+                        BytesMessage bytesMessage = (BytesMessage) message;
+                        byte[] data = new byte[(int) bytesMessage.getBodyLength()];
+                        bytesMessage.readBytes(data);
+                        System.out.println(("Message received " + new String(data)));
                     } else {
-                        System.out.println("Message received.");
+                        System.out.println("Message of a different format received.");
                     }
 
                     message.acknowledge();
