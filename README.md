@@ -16,7 +16,8 @@
     "tradePrice":249.9996,
     "askSize":140,
     "bidPrice":249.6871,
-    "timestamp":2020-03-23T09:32:10.610764-04:00
+    "date":"2020-03-23",
+    "time":"09:32:10.610764-04:00"
     }
     
     {
@@ -29,7 +30,8 @@
     "tradePrice":100.5,
     "askSize":340,
     "bidPrice":99.9975,
-    "timestamp":2020-03-23T09:32:09.609035-04:00
+    "date":"2020-03-23",
+    "time":"09:32:09.609035-04:00"
     }
 
 
@@ -64,7 +66,7 @@ There are two main configurations file:
 
 In my case, I am using free service on Solace Cloud which lets me quickly sping up a broker on AWS. Here are step-by-step [instructions](https://solace.com/cloud-learning/group_getting_started/ggs_signup.html) on how to create your own service and find connection details. This is what my sample `broker.yaml` file looks like:
 
-    host: <unique_host_name>.messaging.solace.cloud:55555  
+    host: <unique_host_name>:55555  
     vpn: <vpn_name>  
     user: <username> 
     pass: <password>
