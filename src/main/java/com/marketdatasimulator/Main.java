@@ -94,7 +94,7 @@ public class Main {
             for (int i = 0; i < stocks.length; i++) {
 
                 // Check if exchange is open
-                if (!stocks[i].getExchange().isExchangeOpen()) {
+                if (stocks[i].getExchange().isExchangeOpen()) {
 
                     // Generate topic for this security
                     String TOPIC_NAME = stocks[i].generateTopic();
