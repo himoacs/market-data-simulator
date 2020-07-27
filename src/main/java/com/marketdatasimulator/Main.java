@@ -113,8 +113,6 @@ public class Main {
                     MessageProducer messageProducer = session.createProducer(topic);
                     messageProducer.send(topic, message, DeliveryMode.NON_PERSISTENT,
                             message.DEFAULT_PRIORITY, message.DEFAULT_TIME_TO_LIVE);
-
-                    messageProducer.send(topic, message);
                 }
                 else {
                     System.out.println(stocks[i].getExchange().getName() + " is closed at this time!");
