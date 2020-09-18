@@ -102,4 +102,4 @@ So how do you get started with this code? Follow these simple steps:
 	 - [Cloud service via Solace Cloud](https://solace.com/cloud-learning/group_getting_started/ggs_signup.html) 
  3. Update `broker.yaml` with your connection settings
  4. [Optional] Update `securities.yaml` with the securities you want to publish sample data for and their corresponding last (trade/ask/bid) prices.
- 5. Run `Main.java` and watch data flow. Note that data will only be published during market hours. 
+ 5. Run `Main.java` and watch data flow (if you have Docker installed the following is an example of building/running the sim from code stored in C:\Development\market-data-simulator -  `docker run -it -v C:\Development\market-data-simulator:/source --rm maven:3.6.3-openjdk-14-slim /bin/bash -c "cd /source;mvn clean;mvn compile;mvn exec:java -Dexec.mainClass=com.marketdatasimulator.Main"`). *Note that data will only be published during market hours.* 
